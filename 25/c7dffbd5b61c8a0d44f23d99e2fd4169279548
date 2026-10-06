@@ -1,0 +1,18 @@
+.gitignore
+  h_4c750985969531 1
+package.json
+  h_4c750985969531 1-26
+pnpm-lock.yaml
+  h_4c750985969531 1-442
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "25c7dffbd5b61c8a0d44f23d99e2fd4169279548",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
