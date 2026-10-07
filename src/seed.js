@@ -1,8 +1,7 @@
 import { createWriteStream, statSync } from "node:fs";
 import { faker } from "@faker-js/faker";
+import { LOG_FILE, LOG_INTERVAL } from "./constants.js";
 
-const LOG_FILE = "access.log";
-const LG_INTERVAL = 1000;
 const maxRecords = Number(process.argv[2] || Infinity);
 
 if (
@@ -10,7 +9,7 @@ if (
   Number.isNaN(maxRecords) ||
   maxRecords < 1
 ) {
-  console.error("Uso: npm run seed -- <quantidade>");
+  console.error("Uso: pnpm run seed -- <quantidade>");
   console.error("A quantidade deve ser um número maior que zero");
   process.exit(1);
 }
@@ -28,13 +27,13 @@ function generateUser() {
     job_area: faker.person.jobArea(),
     company: faker.company.name(),
     job_title: faker.person.jobTitle(),
-    id: faker.string.uuid(),
   };
 }
 
 function generateLogEntry(user) {
   return {
     ...user,
+    id: faker.string.uuid(),
     timestamp: faker.date.recent().toISOString(),
   };
 }
@@ -76,7 +75,7 @@ while (count < maxRecords) {
   await writeRecord(JSON.stringify(record) + "\n");
   count++;
 
-  if (count % LG_INTERVAL === 0) {
+  if (count % LOG_INTERVAL === 0) {
     const { size } = statSync(LOG_FILE);
     console.log(
       `Registros: ${count.toLocaleString()} | Tamanho do arquivo: ${convertBytesToGB(size)} GB`,
