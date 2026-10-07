@@ -1,0 +1,32 @@
+.env.example
+  h_4c750985969531 1
+src/ai.js
+  h_4c750985969531 1-100
+.gitignore
+  h_4c750985969531 4-6
+package.json
+  s_485b3a972958f8::t_b123d1953ad6d2 25
+pnpm-lock.yaml
+  s_485b3a972958f8::t_d3a23d118786d6 212,218,220-221,339-340,344,347-348,350,356,358,363,369,371-372,377,379,382-384,392,395-397,400,438,440,442
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "51bc366b49ff76f7bfa38170719f1fd5ebf1f259",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_485b3a972958f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d493d2dc-8ea5-494e-a6b3-5dbf1eacf888",
+        "model": "unknown"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
