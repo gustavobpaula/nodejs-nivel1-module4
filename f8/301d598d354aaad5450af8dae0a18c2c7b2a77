@@ -1,0 +1,25 @@
+src/db.js
+  h_4c750985969531 1-25
+src/seed.js
+  h_4c750985969531 3,12,36,78
+package.json
+  h_4c750985969531 7-8
+src/ingest.js
+  h_4c750985969531 1-52
+src/constants.js
+  h_4c750985969531 1-2
+.gitignore
+  h_4c750985969531 4
+  h_4c750985969531 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f8301d598d354aaad5450af8dae0a18c2c7b2a77",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
