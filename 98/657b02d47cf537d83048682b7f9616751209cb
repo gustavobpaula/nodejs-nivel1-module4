@@ -1,0 +1,34 @@
+src/ingest.js
+  h_4c750985969531 3,6
+src/ai.js
+  h_4c750985969531 97,100-124
+  s_7408ef9c88679d::t_897e63ea4c6f1a 6,73
+package.json
+  h_4c750985969531 8-10
+src/index.js
+  h_4c750985969531 1-34,36-51,53-55,57-69
+  s_7408ef9c88679d::t_897e63ea4c6f1a 35,52,56
+src/constants.js
+  h_4c750985969531 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "98657b02d47cf537d83048682b7f9616751209cb",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_7408ef9c88679d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "145536c4-0be4-43a3-a9d2-73b37523e11d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
