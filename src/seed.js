@@ -10,7 +10,7 @@ if (
   Number.isNaN(maxRecords) ||
   maxRecords < 1
 ) {
-  console.error("Uso: pnpm run seed -- <quantidade>");
+  console.error("Uso: pnpm run seed <quantidade>");
   console.error("A quantidade deve ser um número maior que zero");
   process.exit(1);
 }
