@@ -7,7 +7,9 @@
     "seed": "node src/seed.js",
     "ingest": "node src/ingest.js",
     "start": "node --env-file=.env src/index.js",
-    "dev": "node --env-file=.env --watch src/index.js"
+    "dev": "node --env-file=.env --watch src/index.js",
+    "test": "node --experimental-test-module-mocks --test src/*.spec.js",
+    "test:watch": "node --experimental-test-module-mocks --test --watch src/*.spec.js"
   },
   "keywords": [],
   "author": "",
