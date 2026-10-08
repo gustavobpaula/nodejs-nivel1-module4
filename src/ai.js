@@ -1,6 +1,7 @@
 import { generateText, Output } from "ai";
 import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
+import { MAX_ROWS } from "./constants.js";
 
 const SCHEMA_DESCRIPTION = `
 	Tabela: access_log
@@ -48,8 +49,24 @@ export function validateSql(sql) {
 
   const safeSql = sql.trim().replace(/;\s*$/, "").trim(); // Remove trailing semicolons
 
+  // Ignore string literal contents so values like '%Update%' don't trigger the checks below
+  const code = safeSql.replace(/'(?:[^']|'')*'/g, "''");
+
+  if (!/^(SELECT|WITH)\b/i.test(code)) {
+    throw new Error("SQL inválido: apenas consultas SELECT são permitidas.");
+  }
+
+  if (code.includes(";")) {
+    throw new Error("SQL inválido: múltiplas queries não são permitidas.");
+  }
+
+  if (/--|\/\*/.test(code)) {
+    throw new Error("SQL inválido: comentários não são permitidos.");
+  }
+
   for (const keyword of BLOCKED_KEYWORDS) {
-    if (new RegExp(`\\b${keyword}\\b`, "i").test(safeSql)) {
+    // Followed by "(" means a function call, e.g. replace(), which is allowed
+    if (new RegExp(`\\b${keyword}\\b(?!\\s*\\()`, "i").test(code)) {
       throw new Error(
         `SQL inválido: contém palavra-chave proibida "${keyword}".`,
       );
@@ -74,6 +91,7 @@ export async function generateSqlObject(question) {
       - Não use ${BLOCKED_KEYWORDS.join(", ")}.
       - Não gere múltiplas queries.
       - Não use comentários SQL.
+      - Se a query retornar registros individuais (sem agregação), use LIMIT ${MAX_ROWS}.
       - Se a pergunta não puder ser respondida com o schema disponível, gere uma query simples de inspeção ou explique a limitação.
 
       Schema disponível:
@@ -99,12 +117,13 @@ export async function generateSqlObject(question) {
   console.log("Explicação:", result.explanation);
 }); */
 
-export async function generateTextAnswer({ question, sql, rows }) {
+export async function generateTextAnswer({ question, sql, rows, truncated }) {
   const { text } = await generateText({
     model,
     system: `
       Responda em português, de forma objetiva, apenas com base nos dados retornados.
       Se o resultado estiver vazio, diga isso claramente.
+      Se o resultado estiver truncado, avise que a resposta considera apenas parte dos dados.
     `,
     prompt: `
       Pergunta original:
@@ -113,7 +132,7 @@ export async function generateTextAnswer({ question, sql, rows }) {
       SQL executada:
       ${sql}
 
-      Linhas retornadas em JSON:
+      Linhas retornadas em JSON${truncated ? ` (resultado truncado: apenas as primeiras ${MAX_ROWS} linhas)` : ""}:
       ${JSON.stringify(rows, null, 2)}
 
       Resposta:

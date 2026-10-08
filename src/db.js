@@ -1,7 +1,9 @@
 import { DatabaseSync } from "node:sqlite";
 
-export function createDb(path = ":memory:") {
-  const db = new DatabaseSync(path);
+export function createDb(path = ":memory:", { readOnly = false } = {}) {
+  const db = new DatabaseSync(path, { readOnly });
+
+  if (readOnly) return db;
 
   db.exec(`
 	CREATE TABLE IF NOT EXISTS access_log (

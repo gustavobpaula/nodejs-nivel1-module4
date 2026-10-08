@@ -1,4 +1,5 @@
 import { createWriteStream, statSync } from "node:fs";
+import { faker } from "@faker-js/faker";
 import { LOG_FILE, LOG_INTERVAL } from "./constants.js";
 import { generateUser, generateLogEntry } from "./mocks.js";
 
