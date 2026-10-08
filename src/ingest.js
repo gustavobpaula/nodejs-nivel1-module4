@@ -1,9 +1,9 @@
 import { createReadStream } from "node:fs";
 import { createInterface } from "node:readline";
-import { LOG_FILE, LOG_INTERVAL } from "./constants.js";
+import { LOG_FILE, LOG_INTERVAL, DB_NAME } from "./constants.js";
 import { createDb } from "./db.js";
 
-const db = createDb();
+const db = createDb(DB_NAME);
 const fileStream = createReadStream(LOG_FILE);
 
 const rl = createInterface({

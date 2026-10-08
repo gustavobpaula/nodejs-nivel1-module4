@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "seed": "node src/seed.js",
-    "ingest": "node src/ingest.js"
+    "ingest": "node src/ingest.js",
+    "start": "node --env-file=.env src/index.js",
+    "dev": "node --env-file=.env --watch src/index.js"
   },
   "keywords": [],
   "author": "",
