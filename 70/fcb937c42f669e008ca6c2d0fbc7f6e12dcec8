@@ -1,0 +1,26 @@
+src/seed.js
+  s_9632568d69a104::t_941e189e199b2e 13
+README.md
+  s_9632568d69a104::t_6089d97ae467df 1-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "70fcb937c42f669e008ca6c2d0fbc7f6e12dcec8",
+  "prompts": {},
+  "humans": {
+    "h_4c750985969531": {
+      "author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_9632568d69a104": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "65c3a474-bd19-4d13-9251-211f590537ad",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Gustavo Bento de Paula <gustavob.paula@gmail.com>"
+    }
+  }
+}
